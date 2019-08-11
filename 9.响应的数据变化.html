@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+         <p>{{msg}}</p>
+         <p>{{miaov.ke}}</p>
+         <p>{{miaov.abc}}</p>
+     </div>
+    <script>
+           /*
+     
+         
+           */
+   
+          
+
+       var vm=  new Vue({
+            el:'#app',
+            data:{ //只有计划好的数据，才能做相应的响应 reactive
+                 msg:"hello",
+                 miaov:{
+                     abc:123
+                 }
+
+            },
+            methods:{
+                sendHandle()
+                {
+                     console.log(this.val);
+                     this.list.push({
+                         id:Date.now(),
+                         title:this.val
+                     })
+                     console.log(this.list)
+                     this.val="";
+                }
+            }
+
+        })
+         //这样做是不能够响应的
+        //vm.miaov.ke='我是新加的';
+
+        //改写属性的值，重新赋值
+      //  vm.miaov={ke:"新的"}
+
+       vm.miaov= Object.assign({},vm.miaov,{ke:"新的"});
+
+          //调用vue 的静态方法 set 
+          // 语法: Vue.set(target,prop,value) 目标，对象,值
+          
+          //Vue.set(vm.miaov,'ke','我是新添加的')
+           
+
+          //调用实例上的方法
+
+          //静态方法
+          function fn(){
+
+          }
+          //称这个miaov 这个方法为静态方法
+           fn.miaov=function(){
+
+           }
+           console.log(Array.prototype);
+
+            let arr=new Array;//实 例
+            arr.push()
+            //静态方法是挂载d在函数上的方法，调用的时候通过函数调用
+            //原型上的方法，需要通过实例调用
+
+          // vm.$set(vm.miaov,'ke','我是新添加的2')
+
+/*
+        //模拟请求的时间
+        setTimeout(function()
+           {
+               vm.list=[
+               {
+                   id:123,
+                   title:'今天很开心'
+               }
+               ]
+           },2000) */
+
+         
+ </script>
+</body>
+</html>

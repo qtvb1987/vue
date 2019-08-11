@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <input 
+        type="button" 
+        value="发送" 
+        v-on:click="sendHandle"
+        />
+        {{val}}
+    <ul>
+        <li v-for="item in list">{{item.title}}</li> 
+    </ul>
+
+    
+     </div>
+    <script>
+           /*
+     
+           指令 渲染列表指令
+           v-for
+           语法 ： v-for="value,index in arr数组"
+
+                   v-for="value,key,index in object对象"
+
+                   Object.keys()
+
+
+                   数据的方法
+                   push pop
+           */
+   
+           let list=[
+               {
+                   id:123,
+                   title:'今天很开心'
+               },
+               {
+                   id:456,
+                   title:'今天很痛苦'
+               },
+           ]
+
+           //list 初始化是没有值的，等到ajax取值回来了，再改写list
+
+       var vm=  new Vue({
+            el:'#app',
+            data:{
+                  list:list,
+                  val:""
+
+            },
+            methods:{
+                sendHandle()
+                {
+                     console.log(this.val);
+                     this.list.push({
+                         id:Date.now(),
+                         title:this.val
+                     })
+                     console.log(this.list)
+                     this.val="";
+                }
+            }
+
+        })
+/*
+        //模拟请求的时间
+        setTimeout(function()
+           {
+               vm.list=[
+               {
+                   id:123,
+                   title:'今天很开心'
+               }
+               ]
+           },2000) */
+
+         
+ </script>
+</body>
+</html>

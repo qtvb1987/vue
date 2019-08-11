@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+    <ul>
+        <li v-for="(item,index) in list">{{item}}----{{index}}</li>
+    </ul>
+
+    <ul>
+            <li v-for="(value,key,index) in obj">{{value}}----{{key}}----{{index}}</li>
+        </ul>
+     </div>
+    <script>
+           /*
+     
+           指令 渲染列表指令
+           v-for
+           语法 ： v-for="value,index in arr数组"
+
+                   v-for="value,key,index in object对象"
+
+                   Object.keys()
+           */
+
+           var obj={a:1,leo:345,ketang:555};
+           console.log(Object.keys(obj));
+        var message='hello,miaov';
+       var vm=  new Vue({
+            el:'#app',
+            data:{
+                  list:[123,234,345],
+                  obj:{
+                      a:1,
+                      b:2,
+                      c:3
+                  }
+            } 
+        })
+
+         
+ </script>
+</body>
+</html>

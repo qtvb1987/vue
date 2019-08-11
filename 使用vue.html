@@ -11,22 +11,44 @@
 <body>
     <div id="app">
        <input type="text" v-model="message" > 
-       <input type="checkbox"   >
-       <p>{{message}}</p>
+       <input type="checkbox"  v-bind:checked="check"  >
+       <input type="text"  v-on:input="inputHandle"  >
+       <p v-bind:title="message">{{message}}</p>
+       <p v-bind:title="1+1">{{1+1}}</p>
+       <p v-bind:title="[1,2,3].map(item=>item*2)">{{[1,2,3].map(item=>item*2)}}</p>
     </div>
     <script>
            /*
            input(text ,checkbox,radio)
            textarear
            select
+
+           v-bind:属性名=“表达式”
+
+
+           vue中使用绑定事件
+           使用指令绑定
+           语法: v-on:事件名=“表达式”
            */
         var message='hello,miaov';
        var vm=  new Vue({
             el:'#app',
             data:{
                    message,
-                   check:ture
-            } 
+                   check:true
+            },
+            methods:{//定义方法 方法中的this都指向实例
+               fn(){
+                   console.log(123);
+               },
+               inputHandle(ev)
+               {
+                console.log(this)
+                   console.log(ev.target.value)
+                       console.log('触发了input')
+                       this.message=ev.target.value
+               }
+            }
         })
 
          
