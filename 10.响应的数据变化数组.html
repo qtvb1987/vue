@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+         <p>{{list}}</p> 
+     </div>
+    <script>
+           /*
+     数据劫持，转成getter/setter
+
+//提供了观察数组的变异方法，使用这些方法将会触发视图更新
+     pust(),pop(),shift(),unshift(),splice(),sort()
+     reverse()
+     会改变原数组
+
+
+     map 不会改原数组
+         vm.list=vm.list.map(item=>item*3)
+
+ //通过下标改变值不可以
+ //vm.list[0]="miaov";
+        //可以这样用
+           vm.list.splice(0,1,"miaov");
+           //length是不能改变原数组的
+vm.list.length=1;
+
+           */
+   
+          
+
+       var vm=  new Vue({
+            el:'#app',
+            data:{ //只有计划好的数据，才能做相应的响应 reactive
+                 list:[1,2,3]
+
+            } 
+
+        })
+        vm.list.push(1000)
+       
+         
+ </script>
+</body>
+</html>

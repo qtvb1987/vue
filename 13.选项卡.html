@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+    .red{background: red}
+     
+    </style>
+</head>
+<body>
+    <div id="app">
+           <input 
+           v-for="item,i in tabData" 
+           type="button"  
+           v-bind:value="item.title"
+           v-bind:class="{red:i===index}"
+           /> 
+       <div 
+       v-bind:style="{display:j===index?'block':'none'}" 
+       v-for="item,j in tabData" 
+       >
+           <p v-for="option in item.list">{{option.subtitle}}</p> 
+       </div>
+        
+
+ 
+     </div>
+    <script>
+           /*
+
+可控制class 
+v-bind:class="{class名字：表达式}"
+表达式为true 就添加class，为false就忽略
+控制 style
+
+v-bind:style="{样式名：样式值}"
+
+
+
+   let buttons=['按钮1','按钮2','按钮3']
+   
+   var n=1;
+   input[n].className='red'
+   divs[n].style.display='block'
+
+vue 中 的事件
+     语法:v-on:事件名='事件处理函数'
+
+     需要传参
+
+     语法：v-on:事件名='事件处理函数(参数)'
+
+           */
+   
+          let tabData=[
+              {
+                  title:"新闻",
+                  list:[{
+                   subtitle:'不错'
+                  },{
+                    subtitle:'不错'
+                  }
+                  ]
+              },
+              {
+                  title:"娱乐",
+                  list:[{
+                    subtitle:'结婚'
+                  },{
+                    subtitle:'不错'
+                  }
+                  ]
+              },
+              {
+                  title:"体育",
+                  list:[{
+                    subtitle:'冠军'
+                  },{
+                    subtitle:'冠军'
+                  }
+                  ]
+              }
+          ]
+       
+       var vm=  new Vue({
+            el:'#app',
+            data:{ //只有计划好的数据，才能做相应的响应 reactive
+                tabData,
+                index:0
+
+            } 
+
+        })
+        
+       
+         
+ </script>
+</body>
+</html>
