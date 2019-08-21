@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+    .red{background: red}
+     
+    </style>
+</head>
+<body>
+    <div id="app">
+           <button    @click="test"> 测试事件 </button>
+           <button    @click="test2($event,123)"> 测试事件 </button>
+ 
+     </div>
+    <script>
+           /*
+                v-on 简写为 @
+ 当在模板中给事件的方法传参，需要手动使用$event把件对象传给方法
+
+           */
+   
+           
+       
+       var vm=  new Vue({
+            el:'#app',
+            methods:{
+              test(ev){
+                console.log(ev);
+                console.log(this)
+              },
+              test2(ev,pare){ //这个方法接收的是传过来的参数，不是事件对象
+                console.log(ev);
+                console.log(pare);
+                console.log(this)
+              }
+            }
+
+        })
+        
+       
+         
+ </script>
+</body>
+</html>

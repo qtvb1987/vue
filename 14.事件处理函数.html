@@ -18,6 +18,7 @@
            type="button"  
            v-bind:value="item.title"
            v-bind:class="{red:i===index}"
+           v-on:click="tabHandle(i)"
            /> 
        <div 
        v-bind:style="{display:j===index?'block':'none'}" 
@@ -90,9 +91,15 @@ vue 中 的事件
             el:'#app',
             data:{ //只有计划好的数据，才能做相应的响应 reactive
                 tabData,
-                index:0
+                index:0  //控制让哪一个面板显示
 
-            } 
+            },
+            methods:{
+              tabHandle(i){
+                console.log(i)
+                this.index=i;
+              }
+            }
 
         })
         
